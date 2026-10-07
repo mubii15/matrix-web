@@ -1,0 +1,225 @@
+:root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Syne', var(--font-sans);
+  --font-pixel: 'Silkscreen', 'Press Start 2P', 'JetBrains Mono', monospace;
+
+  /* Color Palette */
+  --bg-deep: #070709;
+  --bg-surface: #0e0f13;
+  --bg-surface-elevated: #15161c;
+  --bg-surface-glass: rgba(14, 15, 19, 0.75);
+
+  --text-primary: #f5f5f7;
+  --text-secondary: #9ea2b0;
+  --text-muted: #5e6270;
+
+  --accent-cyan: #ffffff;
+  --accent-cyan-glow: rgba(255, 255, 255, 0.35);
+  --accent-cyan-dim: rgba(255, 255, 255, 0.12);
+
+  --status-available: #ffffff;
+  --status-available-bg: rgba(255, 255, 255, 0.1);
+  --status-development: rgba(255, 255, 255, 0.7);
+  --status-development-bg: rgba(255, 255, 255, 0.06);
+  --status-rd: rgba(255, 255, 255, 0.7);
+  --status-rd-bg: rgba(255, 255, 255, 0.08);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.16);
+  --border-active: rgba(255, 255, 255, 0.45);
+
+  --grid-line: rgba(255, 255, 255, 0.03);
+
+  --container-max: 1320px;
+  --header-height: 76px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.55;
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 255, 255, 0.04), transparent 70%),
+    linear-gradient(180deg, var(--bg-deep) 0%, #050507 100%);
+  background-attachment: fixed;
+}
+
+/* Technical Background Grid Overlay */
+.technical-grid {
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Typography Utility Classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.tracking-widest-technical {
+  letter-spacing: 0.16em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* Layout Utilities */
+.site-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 768px) {
+  .site-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+/* Glassmorphism Panels */
+.glass-panel {
+  background: var(--bg-surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+}
+
+.glass-panel:hover {
+  border-color: var(--border-medium);
+}
+
+.glass-card-interactive {
+  background: var(--bg-surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.glass-card-interactive:hover {
+  border-color: var(--border-active);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.6), 0 0 20px -2px var(--accent-cyan-dim);
+}
+
+/* Glowing Accents */
+.text-cyan-glow {
+  color: #ffffff;
+  text-shadow: 0 0 28px rgba(255, 255, 255, 0.45), 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.border-cyan-glow {
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.18);
+}
+
+/* Hairline telemetry crosshairs */
+.telemetry-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.telemetry-tag::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #232530;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #353849;
+}
+
+/* Services Metamorphosis HUD Readout & Arced Deck */
+.services-metamorphosis-hud {
+  position: absolute;
+  z-index: 12;
+  width: 95%;
+  max-width: 620px;
+  bottom: max(14px, 2.5vh);
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  transition: opacity 0.25s ease;
+  pointer-events: auto;
+}
+
+@media (min-width: 960px) {
+  .services-metamorphosis-hud {
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    left: auto;
+    right: max(3vw, 32px);
+    width: 58vw;
+    max-width: 860px;
+    text-align: left;
+  }
+}
+
+@media (min-width: 1400px) {
+  .services-metamorphosis-hud {
+    right: max(3.5vw, 44px);
+    width: 60vw;
+    max-width: 980px;
+  }
+}
+
